@@ -1,6 +1,6 @@
 package animals;
 
-public class Dog extends Animal implements Runner {
+public class Dog extends Animal implements FastRunner {
 
     public Dog(String name) {
         super(name);
@@ -14,5 +14,10 @@ public class Dog extends Animal implements Runner {
     @Override
     public void run() {
         System.out.println("Hop hop");
+    }
+
+    @Override
+    public void runFaster() {
+        System.out.println("Hop hop hop hop hop");
     }
 }
