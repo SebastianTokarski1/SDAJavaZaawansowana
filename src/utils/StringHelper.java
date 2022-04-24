@@ -14,7 +14,7 @@ public class StringHelper {
         }
     }
 
-    public static String calculateSalary(int salary, int bonus) {
+    public static String calculateSalary(int salary, int bonus) throws SalaryNegativeNumberException {
         int sum = salary + bonus;
         if (sum < 0) {
             throw new SalaryNegativeNumberException(sum);

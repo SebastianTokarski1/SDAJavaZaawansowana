@@ -11,9 +11,13 @@ public class ExceptionExerciseMain {
 
         System.out.println("---");
 
-        String finalSalary = StringHelper.calculateSalary(11, 0);
-        System.out.println(finalSalary);
+        try {
+            String finalSalary = StringHelper.calculateSalary(11, 0);
+            System.out.println(finalSalary);
 
-        StringHelper.calculateSalary(11, -50);
+            StringHelper.calculateSalary(11, -50);
+        } catch (Exception e) {
+            System.out.println("Coś poszło nie tak: " + e.getMessage());
+        }
     }
 }
