@@ -1,6 +1,7 @@
 import company.Employee;
 import company.Manager;
 import company.Secretary;
+import enumerated.Size;
 
 public class CompanyMain {
 
