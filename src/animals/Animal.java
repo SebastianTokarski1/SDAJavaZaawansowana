@@ -1,6 +1,6 @@
 package animals;
 
-public abstract class Animal {
+public abstract class Animal {              // nie możemy stworzyć instancji klasy abstrakcyjnej
 
     protected String name;
 
@@ -8,5 +8,5 @@ public abstract class Animal {
         this.name = name;
     }
 
-    public abstract void saySomething();
-}
+    public abstract void saySomething();    // metoda abstrakcyjna nie posiada implementacji
+}                                           // jeśli klasa pochodna nie będzie abstrakcyjna, będzie musiała ją zaimplementować

@@ -1,13 +1,13 @@
 package company;
 
-public final class Secretary extends Employee {
+public final class Secretary extends Employee {     // nie możemy dziedziczyć po klasie oznaczonej jako final
 
-    public Secretary(String name, int salary, int age) {
-        super(name, salary, age);
-        System.out.printf("Wywołuję konstruktor z klasy Secretary z argumentami: %s i %s i %s\n", name, salary, age);
+    public Secretary(String name, int salary) {
+        super(name, salary);
+        System.out.println("Wywołuję konstruktor klasy Secretary z argumentami: " + name + " i " + salary);
     }
 
     public void makeCall(String number) {
-        System.out.printf("Dzwonię do: " + number);
+        System.out.println("Dzwonię do: " + number);
     }
 }

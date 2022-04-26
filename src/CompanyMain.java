@@ -1,42 +1,35 @@
 import company.Employee;
 import company.Manager;
 import company.Secretary;
-import enumerated.Size;
 
 public class CompanyMain {
 
+
     public static void main(String[] args) {
-        Employee employeeOne = new Employee("Jan", 200, 11);
-        Manager employeeTwo = new Manager("Bogdan", 250, 50, 22);
-        Secretary employeeThree = new Secretary("Ala", 230, 33);
+        Employee employeOne = new Employee("Jan", 200);                 // referencja typu Employee może wskazywać na obiekty
+        Employee employeTwo = new Secretary("Alicja", 220);             // które dziedziczą po klasie Employee
+        Employee employeThree = new Manager("Bogdan", 250, 50);
 
-        Employee employeeFour = new Manager("Ola", 250, 50, 44);
-        int salary = employeeFour.getSalary();
-        System.out.println("Pensja Oli: " + salary);
-
-        Employee[] employees = new Employee[3];
-        employees[0] = employeeOne;
-        employees[1] = employeeTwo;
-        employees[2] = employeeThree;
-
-        for (Employee e : employees) {
-            e.show();
-            int employeeSalary = e.getSalary();
-            System.out.println(employeeSalary);
-        }
-
-        employeeTwo.makeCall("123-123-123");
-        employeeTwo.setSecretary(employeeThree);
-        employeeTwo.makeCall("123-123-123");
-
-        displayInformation(employeeOne);
-        displayInformation(employeeTwo);
-        displayInformation(employeeThree);
-    }
-
-    public static void displayInformation(Employee employee) {
+        Employee andrzej = new Employee("Andrzej", 205);
+        Manager milosz = new Manager("Miłosz", 270);
+        Secretary alicja = (Secretary) employeTwo;                                  // jeśli jesteśmy pewni, że nasz obiekt jest klasy Secretary
+        // możemy przypisać go do referencji typu Secretary
         System.out.println();
-        System.out.println("Teraz przedstawia się nowy pracownik");
-        employee.show();
+
+        milosz.makeCall("111-111-111");
+        milosz.setSecretary(alicja);
+        milosz.makeCall("222-222-222");
+
+        displayInformation(andrzej);
+        displayInformation(milosz);
+        displayInformation(alicja);
     }
+
+
+    public static void displayInformation(Employee employee) {      // metoda przyjmuje obiekty klasy Employee i wszystkich klas dziedziczących po Employee
+        System.out.println();
+        System.out.println("Teraz przedstawi się:");
+
+        employee.show();                                            // następuje wywołanie metody show() z obiektu odpowiedniego typu
+    }                                                               // jeśli obiekt jest klasy Manager to wywoła przesłoniętą metodę
 }

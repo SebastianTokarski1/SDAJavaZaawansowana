@@ -6,6 +6,11 @@ public class Tablet extends Device implements EmailSender {
         super(model);
     }
 
+    public void sendMessage(String type, String message) {
+        String consoleMessage = String.format("Wysyłam wiadomość typu %s z %s: %s", type, model, message);      // każdy %s jest zastępowany wartością zmiennej
+        System.out.println(consoleMessage);
+    }
+
     @Override
     public void turnOn() {
         System.out.println("Tablet " + model + " zostaje włączony");
@@ -14,10 +19,6 @@ public class Tablet extends Device implements EmailSender {
     @Override
     public void turnOff() {
         System.out.println("Tablet " + model + " zostaje wyłączony");
-    }
-
-    public void sendMessage(String type, String message) {
-        System.out.printf("Wysyłam wiadomość typu %s z %s o wartości %s", type, model, message);
     }
 
     @Override

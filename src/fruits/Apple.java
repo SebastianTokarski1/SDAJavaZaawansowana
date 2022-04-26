@@ -1,13 +1,18 @@
 package fruits;
 
-import enumerated.Color;
-
 public class Apple extends Fruit {
 
-    private Color color;
-
-    public Apple(int weight, Color color) {
+    public Apple(int weight) {
         super(weight);
-        this.color = color;
+    }
+
+    @Override
+    public int getWeight() {
+        return weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Jabłko: " + String.valueOf(weight);
     }
 }

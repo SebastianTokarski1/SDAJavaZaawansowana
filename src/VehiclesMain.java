@@ -1,7 +1,4 @@
-import animals.Runner;
 import vehicles.Car;
-
-import java.util.Arrays;
 
 public class VehiclesMain {
 
@@ -13,11 +10,7 @@ public class VehiclesMain {
         cars[3] = new Car("Subaru", "Impreza WRX");
         cars[4] = new Car("Mercedes", "c63");
 
-        System.out.println(cars[0]);
-
-        // cars[2].setModel("A7");
-
-        Car thirdCar = cars[2];
+        Car thirdCar = cars[2];     // referencja thirdCar wskazuje na ten sam obiekt co cars[2]
         thirdCar.setModel("A7");
 
         for (Car car : cars) {

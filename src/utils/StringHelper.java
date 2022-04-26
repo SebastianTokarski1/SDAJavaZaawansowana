@@ -3,22 +3,27 @@ package utils;
 public class StringHelper {
 
     public static int parseToInt(String value) {
+        int result;
         try {
-            return Integer.parseInt(value);
-        } catch (NumberFormatException e) {
-            // e.getClass().getCanonicalName()
-            System.out.println("Zamiana wartości nie powiodła się " + e.getMessage());
+            result = Integer.parseInt(value);                                       // kod, który może spowodować rzucenie wyjątku
+        } catch (NumberFormatException e) {                                         // typ wyjątku, który zostanie obsłużony, jeśli wystąpi
+            System.out.println("Nie udało się zamienić " + value + " na liczbę");
+            // e.getClass().getCanonicalName()                                      // tym zapisem możemy uzyskać nazwę wyjątku
             return 0;
         } finally {
-            System.out.println("Zamiana zakończona dla wartości " + value);
+            System.out.println("Zamiana zakończona");                               // ten kod wykona się zawsze, nawet jak w bloku chatch jest return
         }
+
+        System.out.println("Wszystko przeszło pomyślnie");                          // ten kod wykona się tylko jak nie wejdziemy do bloku catch
+        return result;
     }
 
-    public static String calculateSalary(int salary, int bonus) throws SalaryNegativeNumberException {
-        int sum = salary + bonus;
-        if (sum < 0) {
-            throw new SalaryNegativeNumberException(sum);
+    public static String calculateSalary(int salary, int bonus) {
+        int totalSalary = salary + bonus;
+        if (totalSalary < 0) {
+            throw new SalaryNegativeNumberException(totalSalary);                   // rzucamy włanym wyjątkiem
         }
-        return String.valueOf(sum);
+
+        return String.valueOf(salary + bonus);
     }
 }

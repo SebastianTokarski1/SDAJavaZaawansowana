@@ -8,11 +8,11 @@ public class Cat extends Animal implements Runner {
 
     @Override
     public void saySomething() {
-        System.out.println(name + " miau miau");
+        System.out.println(name + ": miauu");
     }
 
     @Override
     public void run() {
-        System.out.println("Skik skik");
+        System.out.println(name + ": skik skik");
     }
 }

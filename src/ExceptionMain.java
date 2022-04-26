@@ -1,42 +1,31 @@
-import java.io.FileNotFoundException;
+import utils.StringHelper;
 
 public class ExceptionMain {
 
     public static void main(String[] args) {
-        System.out.println(1);
-        System.out.println(2);
-        System.out.println(3);
+        System.out.println(StringHelper.parseToInt("1"));
+        System.out.println(StringHelper.parseToInt("1a"));
 
-        calculate(20);
+        System.out.println();
 
-        int age = 10;
+        System.out.println(StringHelper.calculateSalary(100, 20));
+        System.out.println(StringHelper.calculateSalary(100, -200));
 
         try {
-            doSomething(age);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(4);
-        System.out.println(5);
-    }
-
-    private static void doSomething(int age) throws FileNotFoundException {
-        if (age < 0) {
-            throw new IllegalArgumentException("Wiek nie moze byc ujemny");
-        }
-
-        if (age < 0) {
-            throw new FileNotFoundException("Wiek nie moze byc ujemny");
+            doSomething(10);
+        } catch (Exception e) {
+            System.out.println("Coś poszło nie tak " + e.getMessage());
         }
     }
 
-    private static void calculate(int value) {
-        System.out.println(1);
-        if (value % 2 == 0) {
-            return;
+    private static void doSomething(int age) throws Exception { // metoda doSomething potencjalnie rzuca wyjątek dziedziczący po Exception - należy ją obsłużyć
+        if (age < 0) {
+            throw new IllegalArgumentException("Wiek nie moze byc ujemny"); // ten wyjątek dziedziczy po RuntimeException, więc nie musimy go obsługiwać
         }
-        System.out.println(2);
-        System.out.println(3);
+
+        if (age < 0) {
+            throw new Exception("Wiek nie moze byc ujemny");    // wyjątki dziedziczące po Exception musimy obsłużyć - zamykając w strukturze try-catch
+            // lub delegująć obsługę do klienta metody (zmiana w sygnaturze metody doSomething)
+        }
     }
 }

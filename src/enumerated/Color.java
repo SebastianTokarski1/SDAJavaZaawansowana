@@ -1,5 +1,5 @@
 package enumerated;
 
 public enum Color {
-    GREEN, BLUE, RED
+    BLUE, RED, GREEN
 }

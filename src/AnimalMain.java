@@ -3,43 +3,44 @@ import animals.*;
 public class AnimalMain {
 
     public static void main(String[] args) {
-        FastRunner runnerDog = new Dog("Ares");
-        Runner runnerCat = new Cat("Mruczek");
+        Dog dog = new Dog("Ares");
+        Cat cat = new Cat("Filemon");
+        Duck duck = new Duck("Dziwaczka");
 
-        // runnerDog.runFaster();
-        runnerDog.count();
-        Runner.staticCount();
+        Duck.Chick chick = duck.new Chick();        // tworzymy instancję klasy wewnętrznej Chick
+        chick.say();                                // jeśli klasa wewnętrzna nie jest statyczna, to potrzebujemy obiektu klasy Duck
 
-        Runner[] runners = new Runner[]{runnerDog, runnerCat};
-        myStart(runners);
+        Animal animal = duck;                       // referencja może mieć inny typ niż obiekt
+        Bird bird = duck;                           // pod warunkiem, że jest wyżej w hierarchii dziedziczenia (klasa bazowa jest wyżej niż klasa potomna)
 
-        if (runnerDog instanceof Dog) {
-            System.out.println("To jest pies");
-            Dog dog = (Dog) runnerDog;
-            dog.saySomething();
-        }
+        Runner runnerOne = dog;                     // obiekt Dog może zostać przypisany do referencji typu Runner
+        Runner runnerTwo = cat;
 
+        runnerOne.count();                          // referencja typu Runner może wywołać tylko metody run() i count()
+        runnerTwo.run();
 
-        Animal animal = new Animal("Ślimak Romek") {
+        Animal snail = new Animal("Ślimak Romek") {     // klasa anonimowa musi zaimplementować wszystkie metody abstrakcyjne
             @Override
             public void saySomething() {
-                System.out.println("...");
+                System.out.println("Jestem ślimak " + name);    // klasa anonimowa ma dostęp do pól i metod jak zwykła klasa dziedzicząca po Animal
             }
         };
 
-        Runner runner = new Runner() {
-            @Override
-            public void run() {
-                System.out.println("A ja chodzę...");
-            }
-        };
+        snail.saySomething();
 
-        animal.saySomething();
-        runner.run();
+        if (runnerOne instanceof Dog) {
+            Dog runnerDog = (Dog) runnerOne;
+            System.out.print("Jestem psem - ");
+            runnerDog.saySomething();
+        }
+
+        Runner[] runners = {dog, cat};
+        start(runners);
     }
 
-    public static void myStart(Runner[] runners) {
+    public static void start(Runner[] runners) {
         for (Runner runner : runners) {
+            Runner.staticCount();
             runner.run();
         }
     }

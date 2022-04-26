@@ -6,6 +6,10 @@ public class Radio extends Device {
         super(model);
     }
 
+    public void changeChannel(String channel) {
+        System.out.println("Zmieniam kanał na " + channel);
+    }
+
     @Override
     public void turnOn() {
         System.out.println("Radio " + model + " zaczyna grać");
@@ -14,9 +18,5 @@ public class Radio extends Device {
     @Override
     public void turnOff() {
         System.out.println("Radio " + model + " przestaje grać");
-    }
-
-    public void changeChannel(String channel) {
-        System.out.println("Radio " + model + " zmienia kanał na " + channel);
     }
 }
