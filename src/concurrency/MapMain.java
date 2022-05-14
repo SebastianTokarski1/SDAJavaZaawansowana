@@ -27,8 +27,9 @@ public class MapMain {
             Random random = new Random();
 
             IntStream.range(0, 10_000).forEach(i -> {
-                map.compute(random.nextInt(100), (k, v) -> v == null ? 1 : v + 1);
-                safetyMap.compute(random.nextInt(100), (k, v) -> v == null ? 1 : v + 1);
+                int randomValue = random.nextInt(100);
+                map.compute(randomValue, (k, v) -> v == null ? 1 : v + 1);
+                safetyMap.compute(randomValue, (k, v) -> v == null ? 1 : v + 1);
             });
         };
 
