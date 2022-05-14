@@ -14,7 +14,7 @@ public class LambdaTransformationMain {
         Function<Integer, BigDecimal> rabatOperation2 = new Function<Integer, BigDecimal>() {
             @Override
             public BigDecimal apply(Integer integer) {
-                return BigDecimal.valueOf(integer).multiply(BigDecimal.ONE.min(BigDecimal.valueOf(0.1)));
+                return BigDecimal.valueOf(integer).multiply(BigDecimal.ONE.subtract(BigDecimal.valueOf(0.1)));
             }
         };
 
@@ -22,7 +22,7 @@ public class LambdaTransformationMain {
         System.out.println("result 2: " + result2);
 
         // wykonanie operacji 10% rabatu przy użyciu lambdy
-        Function<Integer, BigDecimal> rabatOperation3 = integer -> BigDecimal.valueOf(integer).multiply(BigDecimal.ONE.min(BigDecimal.valueOf(0.1)));
+        Function<Integer, BigDecimal> rabatOperation3 = integer -> BigDecimal.valueOf(integer).multiply(BigDecimal.ONE.subtract(BigDecimal.valueOf(0.1)));
 
         BigDecimal result3 = rabatOperation3.apply(300);
         System.out.println("result 3: " + result3);
@@ -38,7 +38,7 @@ public class LambdaTransformationMain {
 
         @Override
         public BigDecimal apply(Integer integer) {
-            return BigDecimal.valueOf(integer).multiply(BigDecimal.ONE.min(rabat));
+            return BigDecimal.valueOf(integer).multiply(BigDecimal.ONE.subtract(rabat));
         }
     }
 }
