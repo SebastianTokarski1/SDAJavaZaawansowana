@@ -2,7 +2,7 @@ package fruits;
 
 public abstract class Fruit implements WeightProvider, Comparable<Fruit> {
 
-    protected int weight;
+    protected Integer weight;
 
     public Fruit(int weight) {
         this.weight = weight;
